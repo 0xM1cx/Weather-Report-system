@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<Weather_Data>
+	<Location>Tacloban City</Location>
+	<Temperature>Temperature: 30.5 degrees</Temperature>
+	<Precipitation>Chance of Rain: No chance of rain</Precipitation>
+	<Humidity>Humidity: 79 percent</Humidity>
+	<Time>Time: 08:33 PM</Time>
+</Weather_Data>
