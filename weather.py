@@ -67,18 +67,21 @@ class weather:
         speech_mp3 = gTTS(text=weather_mp3, lang='en')
         speech_mp3.save('weather.mp3')
 
-class weather_alert(weather):
-    def __init__(self, api_key, location_key):
-        super().__init__(api_key, location_key)
+class weather_alert:
+    def __init__(self, file):
+        self.file = file
 
     def alerts(self):
-        if 'alerts' in self.weather_response:
+        with open(self.file, 'r') as rawData:
+            self.weather_alert = json.load(rawData)
+
+        if 'alerts' in self.weather_alert:
             alert_information = {
-                    "Alert_Kind": self.weather_response['alerts']['alert'][0]['event'],
-                    'Covered_Area': self.weather_response['alerts']['alert'][0]['areas'],
-                    "Severeness": self.weather_response['alerts']['alert'][0]['severity'],
-                    "Alert_Details": self.weather_response['alerts']['alert'][0]['desc'],
-                    "Instruction": self.weather_response['alerts']['alert'][0]['instruction']
+                    "Alert_Kind": self.weather_alert['alerts']['alert'][0]['event'],
+                    'Covered_Area': self.weather_alert['alerts']['alert'][0]['areas'],
+                    "Severeness": self.weather_alert['alerts']['alert'][0]['severity'],
+                    "Alert_Details": self.weather_alert['alerts']['alert'][0]['desc'],
+                    "Instruction": self.weather_alert['alerts']['alert'][0]['instruction']
                 }
         return alert_information
 
@@ -105,7 +108,7 @@ class weather_alert(weather):
     def alert_speech(self):
         self.alert_data() #gin call la an xml_data() method
 
-        self.alert_Condition = ET.fromstring(self.file_tree)
+        self.alert_Condition = ET.fromstring(self.alert_tree)
         weather_alert_mp3 = '' #Empty String la ini
 
         '''loop adi para ipasok sa ung bawat laman ng xml file into the weather_mp3 variable'''
@@ -129,8 +132,8 @@ class time_check:
         os.system('time.mp3')
 
 #Adi an mga Class Objects
-data = weather('Tacloban City', 'cc411f08a7b9463fbb2131058232406')
-alert = weather_alert('Tacloban City', 'cc411f08a7b9463fbb2131058232406')
+weather_report = weather('Tacloban City', 'cc411f08a7b9463fbb2131058232406')
+alert_report = weather_alert('C:\\Users\\Student\\OneDrive\\Desktop\\Rico_Parena\\practice_Class\\alerts.json')
         
 if __name__ == "__main__":
     '''Adi an tikang sa dtmf.py'''
@@ -169,16 +172,33 @@ if __name__ == "__main__":
 
             '''adi an para ha input ng DTMF'''
             if key_tone_received == str(1000):
-                data.xml_speech() #if 1 an pinindot, magrurun an weather forecast
+                weather_report.xml_speech() #if 1 an pinindot, magrurun an weather forecast
             else:
                 time_elapse = time.time() - actual_time
                 if time_elapse >= loop_interval:
-                    data.xml_speech()
+                    weather_report.xml_speech()
                     actual_time = time.time() #every 30 minutes magrurun an system
                 sleep(1)
             if key_tone_received == '0100':
-                data = time_check().time #if 2 namn po an pinindot, gagana an time check. Time lang po yan di kasama ung month and day
+                act_time = time_check().time #if 2 namn po an pinindot, gagana an time check. Time lang po yan di kasama ung month and day
     
         #mag rurun la adi if may alerts na
-        if alert.alerts() is not None:
-            alert.alert_speech
+        if alert_report.alerts() is not None:
+            '''Adi po para makita n'yo ung xml data ng alert'''
+            alert_report.alert_data()
+
+            '''Adi po para sa mp3'''
+            alert_report.alert_speech()
+    
+    '''IG COMMENT N'YO PO MUNA UNG NASA TAAS'''
+
+    '''Ig comment out adi kuya if may gusto kayo i-test seperately'''
+    
+    '''Adi po para makita n'yo ung xml ng weather report'''
+    #weather_report.xml_data()
+
+    '''Adi po para matest n'yo an mp3 output'''
+    #weather_report.xml_speech()
+
+    '''Adi nman po an para sa time'''
+    #act_time = time_check().time
