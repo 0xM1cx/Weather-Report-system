@@ -1,3 +1,11 @@
 # Weather-Report-system
 
-Credits to chatgpt
+## Developers
+- Charles Laurence Gula
+- Shawn Michael Sudaria
+
+# Technologies Used
+- Python
+- Raspberry Pi
+- Linux
+- JSON
