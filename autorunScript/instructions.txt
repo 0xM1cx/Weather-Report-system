@@ -1,0 +1,18 @@
+1. Ig open an terminal then ig type adi na command: cd /
+2. Then after hito ig type adi na command: mkdir bbt
+3. Then after hito ma type kana command para masulod han imo gin himo na directory which is an "bbt": cd bbt
+4. Then since ada kana sulod ha bbt na directory ig copy past na an launcher.sh ngan an bbt.py file ha bbt na directory.
+5. Then sulod hito na directory type the command: chmod 755 launcher.sh
+6. Then sunod type the command: sh launcher.sh
+7. Then next is type the command: cd ~
+8. Then type the command: mkdir logs
+9. Next type in: sudo crontab -e
+10. Next enter ine na line: @reboot sh /home/pi/bbt/launcher.sh >/home/pi/logs/cronlog 2>&1
+11. 
+
+
+# NOTES:
+- an purpose sa command ha step number 5 kay para ma himo exe or executable file an adto na launcher.sh na file.
+- an purose sa command ha step 6 kay para ig test an launcher.sh na file. sh is the command to run a bash file. Tanan bash file kay na end hin .sh.
+- An bash file kay pariha la ito ha windows na powershell file. For automation/scripting la ito, pero ha linux bash la an gamit. 
+- An purpose ha line didto ha step 10, is para instead na ma run an script at a specific time, ma run hiya upon startup
