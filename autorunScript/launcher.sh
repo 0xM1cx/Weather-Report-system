@@ -1,7 +1,6 @@
 #!/bin/sh
 # launcher.sh
 
-cd /
-cd home/pi/Weather-Report-system
-sudo python main.py
-cd /
+cd ~/Desktop/Weather-Report-system
+sudo python revise_MainCode.py
+cd ~

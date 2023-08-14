@@ -1,15 +1,26 @@
-1. Ig open an terminal then ig type adi na command: cd /
-2. Then after hito ig type adi na command: mkdir bbt
-3. Then after hito ma type kana command para masulod han imo gin himo na directory which is an "bbt": cd bbt
-4. Then since ada kana sulod ha bbt na directory ig copy past na an launcher.sh ngan an bbt.py file ha bbt na directory.
+- Before ma autorun, ig move anay an Weather-Report-System an folder didto ha Desktop
+
+# STEPS ADI UBOS HEHE
+1. Ig open an terminal then ig type adi na command: cd ~/Desktop
+2. Then after hito ig type adi na command: mkdir autorunner
+3. Then after hito ma type kana command para masulod han imo gin himo na directory which is an "autorunner": cd autorunner
+4. Then since ada kana sulod ha autorunner na directory ig copy paste na an launcher.sh pakadto ha autorunner na directory.
 5. Then sulod hito na directory type the command: chmod 755 launcher.sh
 6. Then sunod type the command: sh launcher.sh
-7. Then next is type the command: cd ~
+7. Then next is type the command: cd ~/Desktop
 8. Then type the command: mkdir logs
 9. Next type in: sudo crontab -e
-10. Next enter ine na line: @reboot sh /home/pi/bbt/launcher.sh >/home/pi/logs/cronlog 2>&1
-11. 
+10. Next enter ine na line: @reboot sh /home/pi/Desktop/autorunner/launcher.sh >/home/pi/Desktop/logs/cronlog 2>&1
+11. Basically tapos na kita hine na point. So an ine na step run la: sudo reboot
 
+-----------------------------------
+
+# An ine na steps below is only if wry gumana. 
+1. Dba nag himo man kita kanina logs na folder didto ha Desktop directory, an kanina na na type ka hin "mkdir logs". An purpose hadto is when may error an logs/error log kay didto ma store.
+2. So sulod hadto na directory, logs, then run: cat cronlog
+3. ha step 2, makita na niyo an error message.
+
+-----------------------------------
 
 # NOTES:
 - an purpose sa command ha step number 5 kay para ma himo exe or executable file an adto na launcher.sh na file.
