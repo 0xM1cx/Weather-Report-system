@@ -2,6 +2,7 @@ import tkinter as tk
 import random
 from tkinter import PhotoImage, ttk
 from PIL import Image, ImageTk, ImageSequence
+import os
 
 '''
 Accuracy:
@@ -234,7 +235,7 @@ window.geometry(f"{windowW}x{windowH}+{(screenW - windowW) // 2}+{((screenH - 40
 # window.resizable(width=False, height=False)
 
 
-backgroundImage = PhotoImage(file="C:\\Users\\Student\\OneDrive\\Desktop\\Projects\\Algorithms\\speed_typing\\link.png")
+backgroundImage = PhotoImage(file="./link.png")
 backgroundLabel = tk.Label(window, image=backgroundImage)
 backgroundLabel.place(relheight=1, relwidth=1)
 
